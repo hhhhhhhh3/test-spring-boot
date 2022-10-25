@@ -1,0 +1,44 @@
+version: '3.9'
+
+services:
+  app:
+    container_name: splitAu
+    build: .
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db-postgres/db_splitAu
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+     - db-postgres
+    ports:
+      - "8080:8080"
+  db-postgres:
+    container_name: db-postgres
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=db_splitAu
+    ports:
+      - "5432:5432"
+  pgadmin:
+      image: dpage/pgadmin4
+      restart: always
+      environment:
+        PGADMIN_DEFAULT_EMAIL: "admin@athos.com"
+        PGADMIN_DEFAULT_PASSWORD: "admin"
+      ports:
+        - "80:80"
+      depends_on:
+        - db-postgres
+  app-web:
+    container_name: angularApp
+    build: ../../Reto Técnico/splitAuFront
+    depends_on:
+      - app
+    links:
+      - app
+    ports:
+      - "4200:80"
