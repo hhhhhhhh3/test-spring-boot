@@ -13,7 +13,7 @@
 	<version>0.0.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>splitau</name>
-	<description>Reto técnico Autentia</description>
+	<description>Reto técnico</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
