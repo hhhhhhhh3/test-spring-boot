@@ -27,7 +27,7 @@ services:
       image: dpage/pgadmin4
       restart: always
       environment:
-        PGADMIN_DEFAULT_EMAIL: "admin@athos.com"
+        PGADMIN_DEFAULT_EMAIL: "admin@hhhh3.com"
         PGADMIN_DEFAULT_PASSWORD: "admin"
       ports:
         - "80:80"
